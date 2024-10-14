@@ -24,3 +24,6 @@ $ mv -r hypr hypr-backup # Moves hypr folder to a new hypr-backup folder
 $ git clone https://github.com/gabrielcunningham/Hyprland-Dots hypr # Clones this repo into the "hypr" configuration folder
 ```
 4. 
+
+## Extras
+* The wallpaper I am using can be found on [Unsplash](https://unsplash.com/photos/a-black-and-white-photo-of-a-snow-covered-mountain-TZ8XxTBSJR4). If this wallpaper isn't your vibe, definitely check out the photographer's other photos, there are quite a few good nature shots there!
