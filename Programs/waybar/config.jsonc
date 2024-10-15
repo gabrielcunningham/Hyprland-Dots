@@ -1,0 +1,186 @@
+////////////////////////////////////////////////////////////////////////////////
+//                              My Waybar Config                              //
+//                             Gabriel Cunningham                             //
+////////////////////////////////////////////////////////////////////////////////
+{
+
+    //
+    // Basic configuration
+    //
+    "layer": "top", // Show above windows
+    "position": "bottom", // Bottom of screen
+    "height": 35, // Comment out for dynamic height
+    // "width": 1440, // Comment out for dynamic width
+    "margin": "5px",
+    "spacing": 10,
+    // "name": "primary-waybar", // Only needed for CSS class selector
+    "mode": "dock",
+    "fixed-center": true,
+
+    //
+    // Miscellaneous configuration
+    //
+    "start_hidden": false,
+    "modifier-reset": "press",
+    // "exclusive": true, // Asks the compositor for an exclusive zone
+    "passthrough": false, // Pointer clicks go through the waybar
+    "reload_style_on_change": true,
+    "output": ["DP-1"], // Only output the waybar to my primary display
+
+    //
+    // Add additional configuration files
+    //
+    "include": [],
+
+    //
+    // Module configuration
+    //
+    "modules-left": [
+        "cpu",
+        "disk",
+        "memory"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "network",
+        "clock"
+    ],
+
+    //
+    // Customized Modules
+    //
+
+    "cpu": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-CPU
+
+        "format": "{usage}%  ",
+        "on-click": "gnome-system-monitor"
+
+    },
+
+    "clock": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-Clock
+        // Time format codes can be found at:
+        // https://fmt.dev/latest/syntax/#chrono-format-specifications
+
+        "interval": 10, // Polls every 10 seconds for more accurate time
+        
+        "format": "{:%I:%M%p 󰥔 %m/%d/%Y } ", // 12-hour (HH:MM AM/PM M/D/Y)
+        // "format": "{:%I:%M%p 󰥔 %d %b %Y } ", // 12-hour (HH:MM AM/PM D M Y)
+        // "format": "{:%H:%M 󰥔 %m/%d/%Y } ", // 24-hour (HH:MM M/D/Y)
+        // "format": "{:%H:%M 󰥔 %d %b %Y } ", // 24-hour (HH:MM D M Y)
+
+        "on-click": "gnome-clocks",
+        "on-click-right": "gnome-calendar",
+
+        "tooltip-format": "Left click: Open Clocks\nRight click: Open Calendar"
+
+    },
+
+    "disk": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-Disk
+
+        "format": "{used}/{total} 󰋊 {percentage_free}% free",
+        "path": "/" // Directory to monitor
+    
+    },
+
+    "memory": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-Memory
+
+        "format": "{used}/{total}   {percentage}%"
+
+    },
+
+    "network": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-Network
+
+        "format-wifi": "{frequency}GHz @ {signalStrength}%  ",
+        "format-ethernet": "{bandwidthDownBits} 󰜮 / {bandwidthUpBits} 󰜷"
+
+    },
+
+    "pulseaudio": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-PulseAudio
+        
+        "format": "{volume}% {icon} ",
+        "format-icons": {
+            "headphone": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol"
+
+    },
+
+    "tray": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-Tray
+
+        "icon-size": 18,
+        "spacing": 5
+
+    },
+
+    "hyprland/workspaces": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-Workspaces
+        // https://github.com/Alexays/Waybar/wiki/Module:-Hyprland
+
+        "format": "<span size='150%'>{icon}</span>",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "󰲠",
+            "2": "󰲢",
+            "3": "󰲤",
+            "4": "󰲦",
+            "5": "󰲨",
+            "6": "󰲪",
+            "7": "󰲬",
+            "8": "󰲮",
+            "9": "󰲰",
+            "10": "󰿬",
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+
+    }
+
+}
