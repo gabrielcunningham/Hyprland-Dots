@@ -11,8 +11,8 @@
     "position": "bottom", // Bottom of screen
     "height": 35, // Comment out for dynamic height
     // "width": 1440, // Comment out for dynamic width
-    "margin": "5px 2px 2px",
-    "spacing": 4,
+    "margin": "5px",
+    "spacing": 10,
     // "name": "primary-waybar", // Only needed for CSS class selector
     "mode": "dock",
     "fixed-center": true,
@@ -25,6 +25,7 @@
     // "exclusive": true, // Asks the compositor for an exclusive zone
     "passthrough": false, // Pointer clicks go through the waybar
     "reload_style_on_change": true,
+    "output": ["DP-1"], // Only output the waybar to my primary display
 
     //
     // Add additional configuration files
@@ -73,9 +74,9 @@
         "interval": 10, // Polls every 10 seconds for more accurate time
         
         "format": "{:%I:%M%p 󰥔 %m/%d/%Y } ", // 12-hour (HH:MM AM/PM M/D/Y)
-        // "format": "{:%I:%M%p 󰥔 %d %b %Y } ", // 12-hour (HH:MM AM/PM D MON Y)
+        // "format": "{:%I:%M%p 󰥔 %d %b %Y } ", // 12-hour (HH:MM AM/PM D M Y)
         // "format": "{:%H:%M 󰥔 %m/%d/%Y } ", // 24-hour (HH:MM M/D/Y)
-        // "format": "{:%H:%M 󰥔 %d %b %Y } ", // 24-hour (HH:MM D MON Y)
+        // "format": "{:%H:%M 󰥔 %d %b %Y } ", // 24-hour (HH:MM D M Y)
 
         "on-click": "gnome-clocks",
         "on-click-right": "gnome-calendar"
@@ -145,7 +146,7 @@
         // https://github.com/Alexays/Waybar/wiki/Module:-Workspaces
         // https://github.com/Alexays/Waybar/wiki/Module:-Hyprland
 
-        "format": "{icon}",
+        "format": "<span size='150%'>{icon}</span>",
         "on-click": "activate",
         "format-icons": {
             "1": "󰲠",
