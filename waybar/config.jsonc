@@ -36,12 +36,16 @@
     //
     "modules-left": [
         "cpu",
-        "disk"
+        "disk",
+        "memory"
     ],
     "modules-center": [
         "hyprland/workspaces"
     ],
     "modules-right": [
+        "tray",
+        "pulseaudio",
+        "network",
         "clock"
     ],
 
@@ -54,7 +58,7 @@
         // Find configuration information at:
         // https://github.com/Alexays/Waybar/wiki/Module:-CPU
 
-        "format": "{usage}% ",
+        "format": "{usage}%  ",
         "on-click": "gnome-system-monitor"
 
     },
@@ -68,10 +72,10 @@
 
         "interval": 10, // Polls every 10 seconds for more accurate time
         
-        "format": "{:%I:%M%p 󰥔 %m/%d/%Y }", // 12-hour (HH:MM AM/PM M/D/Y)
-        // "format": "{:%I:%M%p 󰥔 %d %b %Y }", // 12-hour (HH:MM AM/PM D MON Y)
-        // "format": "{:%H:%M 󰥔 %m/%d/%Y }", // 24-hour (HH:MM M/D/Y)
-        // "format": "{:%H:%M 󰥔 %d %b %Y }", // 24-hour (HH:MM D MON Y)
+        "format": "{:%I:%M%p 󰥔 %m/%d/%Y } ", // 12-hour (HH:MM AM/PM M/D/Y)
+        // "format": "{:%I:%M%p 󰥔 %d %b %Y } ", // 12-hour (HH:MM AM/PM D MON Y)
+        // "format": "{:%H:%M 󰥔 %m/%d/%Y } ", // 24-hour (HH:MM M/D/Y)
+        // "format": "{:%H:%M 󰥔 %d %b %Y } ", // 24-hour (HH:MM D MON Y)
 
         "on-click": "gnome-clocks",
         "on-click-right": "gnome-calendar"
@@ -84,17 +88,62 @@
         // https://github.com/Alexays/Waybar/wiki/Module:-Disk
 
         "format": "{used}/{total} 󰋊 {percentage_free}% free",
-
-        // "unit": "GB",
-
         "path": "/" // Directory to monitor
     
+    },
+
+    "memory": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-Memory
+
+        "format": "{used}/{total}   {percentage}%"
+
+    },
+
+    "network": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-Network
+
+        "format-wifi": "{frequency} @ {signalStrength}  ",
+        "format-ethernet": "{bandwidthDownBits} 󰜮 / {bandwidthUpBits} 󰜷"
+
+    },
+
+    "pulseaudio": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-PulseAudio
+        
+        "format": "{volume}% {icon} ",
+        "format-icons": {
+            "headphone": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol"
+
+    },
+
+    "tray": {
+
+        // Find configuration information at:
+        // https://github.com/Alexays/Waybar/wiki/Module:-Tray
+
+        "icon-size": 18,
+        "spacing": 5
+
     },
 
     "hyprland/workspaces": {
 
         // Find configuration information at:
         // https://github.com/Alexays/Waybar/wiki/Module:-Workspaces
+        // https://github.com/Alexays/Waybar/wiki/Module:-Hyprland
 
         "format": "{icon}",
         "on-click": "activate",
@@ -125,7 +174,9 @@
             "8": [],
             "9": [],
             "10": []
-        }
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
 
     }
 
